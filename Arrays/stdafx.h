@@ -4,5 +4,5 @@ using namespace std;
 
 #define line "------------------------------------------------------------------------------------------------"
 
-const int ROWS = 3;
-const int COLS = 8;
+const int ROWS = 4;
+const int COLS = 4;
