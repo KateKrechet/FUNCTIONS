@@ -1,19 +1,22 @@
 ﻿#include<iostream>
 using namespace std;
 #define line "------------------------------------------------------------------------------------------------";
-
+const int ROWS = 3;
+const int COLS = 8;
 
 void FillRand(int arr[], const int n);
 void FillRand(short arr[], const int n);
 void FillRand(float arr[], const int n);
 void FillRand(double arr[], const int n);
 void FillRand(char arr[], const int n);
+void FillRand(int arr[ROWS][COLS], const int ROWS, const int COLS);//прототип перегруженной функции
 
 void PrintRand(int arr[], const int n);
 void PrintRand(short arr[], const int n);
 void PrintRand(float arr[], const int n);
 void PrintRand(double arr[], const int n);
 void PrintRand(char arr[], const int n);
+void PrintRand(int arr[ROWS][COLS], const int ROWS, const int COLS);
 
 void SortRand(int arr[], const int n);
 void SortRand(short arr[], const int n);
@@ -52,10 +55,13 @@ void ShiftRight(float arr[], const int n, int move);
 void ShiftRight(double arr[], const int n, int move);
 void ShiftRight(char arr[], const int n, int move);
 
+//#define HOME_WORK
+
 void main()
 
 {
 	setlocale(LC_ALL, "Russian");
+#ifdef HOME_WORK
 	int move = 0;
 
 	cout << "Short" << endl << line;
@@ -132,7 +138,7 @@ void main()
 	ShiftLeft(brr, SIZE, move);
 	PrintRand(brr, SIZE);
 	cout << "Введите на сколько позиций необходимо осуществить сдвиг вправо: "; cin >> move;
-	ShiftRight(brr, SIZE,move);
+	ShiftRight(brr, SIZE, move);
 	PrintRand(brr, SIZE);
 	cout << endl;
 
@@ -149,7 +155,11 @@ void main()
 	ShiftRight(drr, m, move);
 	PrintRand(drr, m);
 	cout << endl;
+#endif // HOME_WORK
 
+	int i_arr_2[ROWS][COLS];
+	FillRand(i_arr_2, ROWS, COLS);
+	PrintRand(i_arr_2, ROWS, COLS);
 }
 
 void FillRand(short arr[], const int n)
@@ -172,12 +182,13 @@ void FillRand(int arr[], const int n)
 	}
 
 }
+
 void FillRand(float arr[], const int n)
 {
 	//формирование массива
 	for (int i = 0; i < n; i++)
 	{
-		arr[i] = float(rand() % 100)/10;
+		arr[i] = float(rand() % 100) / 10;
 
 	}
 
@@ -202,6 +213,17 @@ void FillRand(char arr[], const int n)
 
 	}
 
+}
+void FillRand(int arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	//формирование массива
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			arr[i][j] = rand() % 100;
+		}
+	}
 }
 void PrintRand(short arr[], const int n)
 {
@@ -251,6 +273,20 @@ void PrintRand(char arr[], const int n)
 	{
 		cout << arr[i] << "\t";
 
+	}
+	cout << endl;
+}
+void PrintRand(int arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	//вывод массива
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			cout << arr[i][j] << "\t";
+		}
+
+		cout << endl;
 	}
 	cout << endl;
 }
